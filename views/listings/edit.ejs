@@ -1,0 +1,85 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+        <div class="row mt-3">
+            <div class="col-8 offset-2">
+                <br><br>
+                <h3>Edit Your Listing</h3>
+                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate
+                    class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control"
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" class="form-control"
+                            required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">
+                            Please enter a short description
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+
+                        <select name="listing[category]" id="category" class="form-select" required>
+                            <option value="Apartment" <%= listing.category === "Apartment" ? "selected" : "" %>>Apartment</option>
+                            <option value="House" <%= listing.category === "House" ? "selected" : "" %>>House</option>
+                            <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>>Mountains</option>
+                            <option value="Villa" <%= listing.category === "Villa" ? "selected" : "" %>>Villa</option>
+                            <option value="Cottage" <%= listing.category === "Cottage" ? "selected" : "" %>>Cottage</option>
+                            <option value="Castles" <%= listing.category === "Castles" ? "selected" : "" %>>Castles</option>
+                            <option value="Bungalow" <%= listing.category === "Bungalow" ? "selected" : "" %>>Bungalow</option>
+                            <option value="Amazing Pools" <%= listing.category === "Amazing Pools" ? "selected" : "" %>>Amazing Pools</option>
+                            <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>>Camping</option>
+                            <option value="Farms" <%= listing.category === "Farms" ? "selected" : "" %>>Farms</option>
+                            <option value="Arctic" <%= listing.category === "Arctic" ? "selected" : "" %>>Arctic</option>
+                            <option value="Beach" <%= listing.category === "Beach" ? "selected" : "" %>>Beach</option>
+                            <option value="Other" <%= listing.category === "Other" ? "selected" : "" %>>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <p>Original Listing Image</p>
+                        <img src="<%= originalImageUrl %>" alt="Listing Image" srcset="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload New Image</label>
+                        <input type="file" name="listing[image]" src="" alt=""
+                            class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" name="listing[price]" id="" value="<%= listing.price %>"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Price should be valid
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" name="listing[country]" id="" value="<%= listing.country %>"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Country name should be valid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" id="" value="<%= listing.location %>"
+                            class="form-control" required>
+                        <div class="invalid-feedback">
+                            Location should be valid
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark add-btn mt-3">Edit</button>
+                </form>
+            </div>
+        </div>
+    </body>
